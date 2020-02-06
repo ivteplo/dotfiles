@@ -1,3 +1,11 @@
+" 
+" .vimrc
+"
+" Copyright Ivan Teplov (c) 2020. All rights reserved
+"
+" This file is licensed under Apache License 2.0
+" More info about license: www.apache.org/licenses/LICENSE-2.0
+"
 
 set wrap
 set magic
