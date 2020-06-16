@@ -1,8 +1,10 @@
-# Ivan Teplov's Dot Files
-This is a repository which contains my `.*rc` files.
+# dotfiles
+This is a repository which contains my configuration files for different apps.
 
-# VIMRC
-File `Vim/vimrc` uses a plugin `VimPlug` to manage the extensions for Vim. When first opened the vim, run: `:PlugInstall`. When the installation ended, restart the Vim.
+## .vimrc
+File `Vim/vimrc` uses a plugin `VimPlug` to manage the extensions for Vim. 
 
-*This repository is licensed under [Apache License 2.0](www.apache.org/licenses/LICENSE-2.0)*
+[How to install `VimPlug`](https://github.com/junegunn/vim-plug#installation)
+
+When first opened the vim, run: `:PlugInstall`. When the installation ended, restart the Vim.
 
