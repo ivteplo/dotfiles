@@ -1,12 +1,3 @@
-" 
-" .vimrc
-"
-" Copyright Ivan Teplov (c) 2020. All rights reserved
-"
-" This file is licensed under Apache License 2.0
-" More info about license: www.apache.org/licenses/LICENSE-2.0
-"
-
 set wrap
 set magic
 set mouse=a
@@ -15,6 +6,7 @@ set termguicolors
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+" Using VimPlug as the plugin manager
 call plug#begin('~/.vim/plugged')
 
     Plug 'scrooloose/nerdtree'
@@ -34,3 +26,4 @@ try
     colorscheme material
 catch
 endtry
+
