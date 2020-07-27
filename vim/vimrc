@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'kaicataldo/material.vim'
+    Plug 'mattn/emmet-vim'
 
 call plug#end()
 
