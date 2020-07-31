@@ -7,10 +7,10 @@ filetype plugin on
 " Setting default tab width and use spaces for tabs
 set tabstop=4
 set shiftwidth=4 
-set softtabstop=0 
 set expandtab 
 set smarttab
 set autoindent
+set smartindent
 
 call plug#begin('~/.vim/plugged')
 
@@ -32,8 +32,12 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 " Make *.asm files use nasm syntax by default
 autocmd BufEnter *.asm setlocal syntax=nasm
 
+" Make *.cjs and *.mjs be highlighted as javascript files
+autocmd BufEnter *.cjs setlocal syntax=javascript
+autocmd BufEnter *.mjs setlocal syntax=javascript
+
 " Make html, js and css files use tab width 2
-autocmd BufEnter *.html,*.css,*.pug,*.sass,*.scss,*.js,*.jsx,*.ts,*.tsx 
+autocmd BufEnter *.html,*.css,*.pug,*.sass,*.scss,*.js,*.jsx,*.ts,*.tsx,*.json,*.cjs,*.mjs 
     \ setlocal tabstop=2 |
     \ setlocal shiftwidth=2
 
