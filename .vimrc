@@ -1,3 +1,5 @@
+set encoding=utf-8
+set filetype=unix
 
 """""""""""""""""""""
 " SOME BASIC CONFIG "
@@ -105,9 +107,9 @@ autocmd BufEnter *.asm setlocal syntax=nasm
 
 
 " Make html, js and css files use tab width 2
-autocmd BufEnter *.html,*.css,*.pug,*.sass,*.scss,*.js,*.jsx,*.ts,*.tsx 
-    \ setlocal tabstop=2 |
-    \ setlocal shiftwidth=2
+"autocmd BufEnter *.html,*.css,*.pug,*.sass,*.scss,*.js,*.jsx,*.ts,*.tsx 
+"    \ setlocal tabstop=2 |
+"    \ setlocal shiftwidth=2
 
 
 """""""""""""
