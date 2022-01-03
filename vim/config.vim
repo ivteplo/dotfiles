@@ -64,7 +64,7 @@ nnoremap <C-a> :let @/ = ""<CR>
 """""""""""
 
 call plug#begin('~/.vim/plugged')
-
+    Plug 'ghifarit53/tokyonight-vim'
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'mattn/emmet-vim'
@@ -80,7 +80,9 @@ call plug#end()
 """""""""""""""""
 
 " Apply colorscheme
-colorscheme xcodedark
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1
+colorscheme tokyonight
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
