@@ -1,1 +1,2 @@
-sh $(Join-Path $PSScriptRoot git-editcommit)
+git commit --amend
+

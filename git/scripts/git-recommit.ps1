@@ -1,1 +1,2 @@
-sh $(Join-Path $PSScriptRoot git-recommit)
+git commit --amend --no-edit
+

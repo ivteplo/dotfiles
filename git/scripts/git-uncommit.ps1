@@ -1,1 +1,2 @@
-sh $(Join-Path $PSScriptRoot git-uncommit)
+git reset HEAD~1
+
