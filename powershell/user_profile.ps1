@@ -14,6 +14,10 @@ function which ($command) {
     Get-Command -Name $command -ErrorAction SilentlyContinue |
         Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
+
+function Clear-Completions-History () {
+    Remove-Item ((Get-PSReadLineOption).HistorySavePath)
+}
  
 # Add custom git commands to the path
 $scriptsFolder = Resolve-Path "~\.config\git\scripts"
