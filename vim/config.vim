@@ -1,6 +1,8 @@
 set encoding=utf-8
 set filetype=unix
 
+set noswapfile
+
 """""""""""""""""""""
 " SOME BASIC CONFIG "
 """""""""""""""""""""
@@ -14,7 +16,7 @@ set termguicolors
 
 " Show line numbers
 set number
-set numberwidth=5
+set numberwidth=7
 
 " Display incomplete commands
 set showcmd
@@ -33,13 +35,15 @@ set softtabstop=0
 set expandtab 
 set smarttab
 
+set scrolloff=7
+
 """""""
 " GUI "
 """""""
 
 if has("gui_running")
     set guioptions=
-    set guifont=Cascadia\ Code\ PL:h12
+    set guifont=JetBrains\ Mono\ NL:h12
 endif
 
 """"""""""
@@ -64,25 +68,73 @@ nnoremap <C-a> :let @/ = ""<CR>
 """""""""""
 
 call plug#begin('~/.vim/plugged')
-    Plug 'ghifarit53/tokyonight-vim'
+    " Sidebar with files in the current folder
     Plug 'scrooloose/nerdtree'
+
+    " Shows a bottom bar with useful information
     Plug 'vim-airline/vim-airline'
+
+    " Emmet support for vim
     Plug 'mattn/emmet-vim'
+
+    " Autoclose parentheses
     Plug 'Townk/vim-autoclose'
-    Plug 'arzg/vim-colors-xcode'
+
+    " Fuzzy file finder is a tool to quickly find a file in your project
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
 
+    " EditorConfig is a plugin to enforce the same settings
+    " across different code editors
+    Plug 'editorconfig/editorconfig-vim'
+
+    " Better support for JavaScript syntax highlighting
+    Plug 'yuezk/vim-js'
+
+    " Color schemes
+    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'ghifarit53/tokyonight-vim'
+    Plug 'arzg/vim-colors-xcode'
+    Plug 'rakr/vim-one'
 call plug#end()
 
 
-"""""""""""""""""
-" CUSTOMIZATION "
-"""""""""""""""""
+""""""""""
+" THEMES "
+""""""""""
 
-" Apply colorscheme
-let g:tokyonight_style = 'storm' " available: night, storm
-let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
+" Tokyo Night
+function ThemeTokyoNight()
+    let g:tokyonight_style = 'storm' " available: night, storm
+    let g:tokyonight_enable_italic = 1
+    colorscheme tokyonight
+endfunction
+" call ThemeTokyoNight()
+
+" One Dark
+function ThemeOneDark()
+    set background=dark
+    let g:airline_theme='one'
+    colorscheme one
+endfunction
+" call ThemeOneDark()
+
+" Xcode theme
+function ThemeXcode()
+    " There are multiple variants of this theme
+    colorscheme xcodedark
+    " Other variants (hc = high contrast):
+    "colorscheme xcodedarkhc
+    "colorscheme xcodelight
+    "colorscheme xcodelighthc
+    "colorscheme xcodewwdc
+endfunction
+" call ThemeXcode()
+
+" Dracula theme
+function ThemeDracula()
+    colorscheme dracula
+endfunction
+call ThemeDracula()
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -93,7 +145,7 @@ let g:hybrid_reduced_contrast = 1
 " Disable typing sound in vim
 let g:vim_typing_sound = 0
 
-" Make NERDTree open when hitting Ctrl+b
+" Toggle sidebar when hitting Ctrl+b
 nnoremap <C-b> :NERDTreeToggle<CR>
 
 " Make Fuzzy Finder open when hitting Ctrl+p
@@ -106,25 +158,4 @@ nnoremap <C-p> :FZF<CR>
 
 " Make *.asm files use nasm syntax by default
 autocmd BufEnter *.asm setlocal syntax=nasm
-
-
-" Make html, js and css files use tab width 2
-"autocmd BufEnter *.html,*.css,*.pug,*.sass,*.scss,*.js,*.jsx,*.ts,*.tsx 
-"    \ setlocal tabstop=2 |
-"    \ setlocal shiftwidth=2
-
-
-"""""""""""""
-" FUNCTIONS "
-"""""""""""""
-
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
 
