@@ -52,3 +52,18 @@ source ~/.config/vim/config.vim
 4. Wait for the installation to complete
 
 5. Restart the editor
+
+### Windows Terminal
+
+First, you need to figure out where is your `settings.json` file. Usually, there is a path like this:
+
+```
+%LOCALAPPDATA%/Packages/Microsoft.WindowsTerminal_?????????????/LocalState/settings.json
+```
+
+You need to replace that `settings.json` file with the `windows-terminal.json` file:
+
+```powershell
+# In PowerShell
+cp ~/.config/windows-terminal.json $env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_?????????????/LocalState/settings.json
+```
