@@ -95,6 +95,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ghifarit53/tokyonight-vim'
     Plug 'arzg/vim-colors-xcode'
     Plug 'rakr/vim-one'
+    Plug 'ntk148v/vim-horizon'
 call plug#end()
 
 
@@ -134,7 +135,13 @@ endfunction
 function ThemeDracula()
     colorscheme dracula
 endfunction
-call ThemeDracula()
+" call ThemeDracula()
+
+" Horizon theme
+function ThemeHorizon()
+    colorscheme horizon
+endfunction
+call ThemeHorizon()
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
