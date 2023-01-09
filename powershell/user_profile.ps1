@@ -7,7 +7,7 @@ Invoke-Expression (&starship init powershell)
 # Autocompletion
 Import-Module PSReadLine
 Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
+#Set-PSReadLineOption -PredictionViewStyle ListView
 
 # Utilities
 function which ($command) {
