@@ -80,8 +80,13 @@ call plug#begin('~/.vim/plugged')
     " Autoclose parentheses
     Plug 'Townk/vim-autoclose'
 
-    " Fuzzy file finder is a tool to quickly find a file in your project
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+    if has('nvim')
+        Plug 'nvim-lua/plenary.nvim'
+        Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+    else
+        " Fuzzy file finder is a tool to quickly find a file in your project
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+    endif
 
     " EditorConfig is a plugin to enforce the same settings
     " across different code editors
@@ -117,7 +122,7 @@ function ThemeOneDark()
     let g:airline_theme='one'
     colorscheme one
 endfunction
-" call ThemeOneDark()
+call ThemeOneDark()
 
 " Xcode theme
 function ThemeXcode()
@@ -141,7 +146,7 @@ endfunction
 function ThemeHorizon()
     colorscheme horizon
 endfunction
-call ThemeHorizon()
+" call ThemeHorizon()
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -156,7 +161,11 @@ let g:vim_typing_sound = 0
 nnoremap <C-b> :NERDTreeToggle<CR>
 
 " Make Fuzzy Finder open when hitting Ctrl+p
-nnoremap <C-p> :FZF<CR>
+if has('nvim')
+    nnoremap <C-p> :Telescope find_files<CR>
+else
+    nnoremap <C-p> :FZF<CR>
+endif
 
 
 """""""""""""""""""""""""""
