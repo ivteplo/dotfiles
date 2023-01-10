@@ -53,6 +53,16 @@ source ~/.config/vim/config.vim
 
 5. Restart the editor
 
+#### Changing color scheme
+
+You can create a file called `theme.vim` in the same folder where the `config.vim` is. Here, you can call a function to change color scheme. For instance:
+
+```vim
+call ThemeTokyoNight()
+```
+
+The `theme.vim` file is ignored by Git, so that every change of current color scheme won't change the state of the repo.
+
 ### Windows Terminal
 
 First, you need to figure out where is your `settings.json` file. Usually, there is a path like this:
