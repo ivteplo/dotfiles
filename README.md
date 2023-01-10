@@ -63,6 +63,28 @@ call ThemeTokyoNight()
 
 The `theme.vim` file is ignored by Git, so that every change of current color scheme won't change the state of the repo.
 
+### Neovim
+
+1. Do all the steps inside the [Vim](#vim) section
+
+2. Install [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+3. Install TypeScript Language Server and TypeScript for LSP:
+
+```bash
+npm install -g typescript typescript-language-server
+```
+
+4. Start Neovim
+
+5. Install packages from Packer:
+
+```vim
+:PackerInstall
+```
+
+6. After the installation is complete, restart Neovim
+
 ### Windows Terminal
 
 First, you need to figure out where is your `settings.json` file. Usually, there is a path like this:
