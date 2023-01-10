@@ -122,7 +122,7 @@ function ThemeOneDark()
     let g:airline_theme='one'
     colorscheme one
 endfunction
-call ThemeOneDark()
+" call ThemeOneDark()
 
 " Xcode theme
 function ThemeXcode()
@@ -147,6 +147,14 @@ function ThemeHorizon()
     colorscheme horizon
 endfunction
 " call ThemeHorizon()
+
+let vim_config_folder = resolve(expand('<sfile>:p:h'))
+let theme_file = vim_config_folder . "/theme.vim"
+if filereadable(theme_file)
+    exec "source " . theme_file
+else
+    call ThemeOneDark()
+endif
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
