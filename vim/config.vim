@@ -183,3 +183,15 @@ endif
 " Make *.asm files use nasm syntax by default
 autocmd BufEnter *.asm setlocal syntax=nasm
 
+
+""""""""""
+" NEOVIM "
+""""""""""
+
+let neovim_config_folder = substitute(resolve(vim_config_folder . '/../nvim/lua'), "\\", "/", "g")
+
+if has('nvim')
+    let lua_package_path = neovim_config_folder . "/?.lua"
+    exec "lua package.path = ';" . neovim_config_folder . "/?.lua;' .. package.path"
+    exec "lua require('init')"
+endif
