@@ -4,10 +4,12 @@ Set-Alias grep findstr
 # Prompt
 Invoke-Expression (&starship init powershell)
 
-# Autocompletion
-Import-Module PSReadLine
-Set-PSReadLineOption -PredictionSource History
-#Set-PSReadLineOption -PredictionViewStyle ListView
+# Get path to the completions history in order to be able to clear it
+Import-Module -Name PSReadline
+$CompletionsHistoryPath = (Get-PSReadLineOption).HistorySavePath
+
+# Turn off PSReadline
+Remove-Module -Name PSReadline
 
 # Utilities
 function which ($command) {
@@ -16,10 +18,10 @@ function which ($command) {
 }
 
 function Clear-Completions-History () {
-    Remove-Item ((Get-PSReadLineOption).HistorySavePath)
+    Remove-Item $CompletionsHistoryPath
 }
  
 # Add custom git commands to the path
-$scriptsFolder = Resolve-Path "~\.config\git\scripts"
-$env:PATH="${env:PATH};$scriptsFolder"
+$GitScriptsFolder = Resolve-Path "~\.config\git\scripts"
+$env:PATH="${env:PATH};$GitScriptsFolder"
 
