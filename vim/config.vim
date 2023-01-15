@@ -29,8 +29,8 @@ set backspace=indent,eol,start
 filetype plugin on
 
 " Setting default tab width and use spaces for tabs
-set tabstop=4
-set shiftwidth=4 
+set tabstop=2
+set shiftwidth=2
 set softtabstop=0 
 set expandtab 
 set smarttab
@@ -88,6 +88,13 @@ endfunction
 " One Dark
 function ThemeOneDark()
     set background=dark
+    let g:airline_theme='one'
+    colorscheme one
+endfunction
+
+" One Light
+function ThemeOneLight()
+    set background=light
     let g:airline_theme='one'
     colorscheme one
 endfunction
