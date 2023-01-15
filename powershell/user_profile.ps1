@@ -8,17 +8,17 @@ Invoke-Expression (&starship init powershell)
 Import-Module -Name PSReadline
 $CompletionsHistoryPath = (Get-PSReadLineOption).HistorySavePath
 
-# Turn off PSReadline
-Remove-Module -Name PSReadline
+# Turn off PSReadline autocompletions
+Set-PSReadLineOption -PredictionSource None
 
 # Utilities
 function which ($command) {
-    Get-Command -Name $command -ErrorAction SilentlyContinue |
-        Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
 function Clear-Completions-History () {
-    Remove-Item $CompletionsHistoryPath
+  Remove-Item $CompletionsHistoryPath
 }
  
 # Add custom git commands to the path
