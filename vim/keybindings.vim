@@ -14,3 +14,7 @@ else
     nnoremap <C-p> :FZF<CR>
 endif
 
+if !has('nvim')
+    nnoremap <C-`> :botright terminal ++close pwsh<CR>
+endif
+

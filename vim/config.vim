@@ -134,6 +134,20 @@ call ImportConfigFile("keybindings.vim")
 " Make *.asm files use NASM syntax by default
 autocmd BufEnter *.asm setlocal syntax=nasm
 
+""""""""
+" GVIM "
+""""""""
+
+if has('gui_running')
+  call ImportConfigFile("gvim.vim")
+endif
+
+""""""""""""
+" TERMINAL "
+""""""""""""
+
+call ImportConfigFile("terminal.vim")
+
 """"""""""
 " NEOVIM "
 """"""""""
