@@ -48,6 +48,10 @@ set smarttab
 " Minimal number of lines to keep above and below the cursor
 set scrolloff=7
 
+" Disable line wrapping on all files, except markdown
+set nowrap
+autocmd FileType markdown setlocal nowrap
+
 """"""""""
 " SEARCH "
 """"""""""
