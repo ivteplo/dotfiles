@@ -87,7 +87,7 @@ npm install -g typescript typescript-language-server
 
 ### Windows Terminal
 
-First, you need to figure out where is your `settings.json` file. Usually, there is a path like this:
+First, you need to figure out where your `settings.json` file is. Usually, there is a path like this:
 
 ```
 %LOCALAPPDATA%/Packages/Microsoft.WindowsTerminal_?????????????/LocalState/settings.json
