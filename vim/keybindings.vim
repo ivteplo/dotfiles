@@ -16,5 +16,6 @@ endif
 
 if !has('nvim')
     nnoremap <C-`> :botright terminal ++close pwsh<CR>
+    tnoremap <C-`> <Esc><C-w><S-n><CR>
 endif
 
