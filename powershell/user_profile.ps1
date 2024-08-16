@@ -1,3 +1,10 @@
+# WARNING: The default Windows behavior considering environment variables
+# makes not that much sense for me in my situation, so I this line is going to
+# make user's environment variables have higher importance than system's
+$systemPath = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+$userPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+$env:PATH = "$userPath;$systemPath"
+
 # Aliases
 Set-Alias grep findstr
 
@@ -24,4 +31,3 @@ function Clear-Completions-History () {
 # Add custom git commands to the path
 $GitScriptsFolder = Resolve-Path "~\.config\git\scripts"
 $env:PATH="${env:PATH};$GitScriptsFolder"
-

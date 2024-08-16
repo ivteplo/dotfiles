@@ -1,11 +1,28 @@
 -- Setup for language support using language server protocol
 
+local is_cmp_loaded, cmp = pcall(require, 'cmp')
 local is_lspconfig_loaded, nvim_lsp = pcall(require, 'lspconfig')
 local is_cmp_nvim_lsp_loaded, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 
-if not is_lspconfig_loaded or not is_cmp_nvim_lsp_loaded then
+if not is_cmp_loaded or not is_lspconfig_loaded or not is_cmp_nvim_lsp_loaded then
   return
 end
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true
+    })
+  }),
+  sources = {
+    { name = 'path' },
+    { name = 'nvim_lsp' }
+  }
+})
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
