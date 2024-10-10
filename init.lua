@@ -4,7 +4,7 @@ require "plugins"
 
 -- Customization --
 -- Change color scheme to XCode Light High Contrast
-vim.cmd.colorscheme "xcodelighthc"
+--vim.cmd.colorscheme "xcodelighthc"
 
 require "file_associations"
 require "terminal"
