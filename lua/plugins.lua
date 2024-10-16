@@ -49,17 +49,12 @@ require("lazy").setup {
 	-- Activity bar (in the bottom)
 	{ "nvim-lualine/lualine.nvim" },
 
-	-- Markdown Preview
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && npm install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
+	-- Install LSP servers
+	{ 
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig"
 	},
-
 	-- Default LSP configurations
 	{
 		"VonHeikemen/lsp-zero.nvim",
