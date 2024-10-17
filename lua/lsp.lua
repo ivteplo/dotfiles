@@ -25,14 +25,21 @@ mason_lspconfig.setup_handlers {
 	-- a dedicated handler.
 	function (server_name) -- default handler (optional)
 		lsp[server_name].setup {
-			--capabilities = capabilities
+			capabilities = capabilities
 		}
 	end,
-	---- Next, you can provide a dedicated handler for specific servers.
-	---- For example, a handler override for the `rust_analyzer`:
-	--["rust_analyzer"] = function ()
-	--	require("rust-tools").setup {}
-	--end
+	["tinymist"] = function ()
+		lsp.tinymist.setup {
+			capabilities = capabilities,
+			root_dir = function (filename, bufnr)
+				return vim.fn.getcwd()
+			end,
+			settings = {
+				exportPdf = "onType",
+				outputPath = "$root/build/$dir/$name"
+			}
+		}
+	end
 }
 
 lsp_zero.setup()
