@@ -14,10 +14,10 @@ telescope.setup {
 
 telescope.load_extension("ui-select")
 
-vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, {})
+vim.keymap.set("n", "<leader>files", telescope_builtin.find_files, {})
+vim.keymap.set("n", "<leader>grep", telescope_builtin.live_grep, {})
+vim.keymap.set("n", "<leader>buffers", telescope_builtin.buffers, {})
+vim.keymap.set("n", "<leader>help", telescope_builtin.help_tags, {})
 vim.keymap.set("n", "<leader>cmd", telescope_builtin.commands, {})
 vim.keymap.set("n", "<leader>theme", telescope_builtin.colorscheme, {})
 vim.keymap.set("n", "<leader>actions", vim.lsp.buf.code_action, {})

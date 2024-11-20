@@ -25,7 +25,10 @@ mason_lspconfig.setup_handlers {
 	-- a dedicated handler.
 	function (server_name) -- default handler (optional)
 		lsp[server_name].setup {
-			capabilities = capabilities
+			capabilities = capabilities,
+			root_dir = function (filename, bufnr)
+				return vim.fn.getcwd()
+			end
 		}
 	end,
 	["tinymist"] = function ()
@@ -63,5 +66,5 @@ cmp.setup({
 
 -- LSP error pane
 local trouble = require "trouble"
-vim.keymap.set("n", "<leader>errors", function() trouble.open() end)
+vim.keymap.set("n", "<leader>errors", function() trouble.open { new = false, refresh = true } end)
 

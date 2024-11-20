@@ -27,6 +27,10 @@ require("lazy").setup {
 	},
 
 
+	-- Auto-detect indentation
+	{ "nmac427/guess-indent.nvim" },
+
+
 	-- File explorer sidebar
 	{ "preservim/nerdtree" },
 
