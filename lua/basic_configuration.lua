@@ -26,3 +26,10 @@ vim.opt.expandtab = false
 -- Some keybindings use `<leader>` as a beginning character. By default it is `\`, but comma is more easy to reach
 vim.g.mapleader = ","
 
+-- Specify the shell to use inside of the terminal
+vim.opt.shell = "pwsh.exe"
+vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
