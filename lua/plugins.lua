@@ -81,7 +81,7 @@ require("lazy").setup {
 			insert_at_end = true,
 			insert_at_start = false,
 		},
-		setup = function()
+		init = function()
 			-- Move to previous/next
 			vim.keymap.set('n', '<C-p>', '<Cmd>BufferPrevious<CR>')
 			vim.keymap.set('n', '<C-n>', '<Cmd>BufferNext<CR>')
@@ -142,7 +142,9 @@ require("lazy").setup {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {},
-		setup = function()
+		init = function()
+			local lsp = require "lspconfig"
+
 			-- Enable (broadcasting) snippet capability for completion
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -186,8 +188,8 @@ require("lazy").setup {
 			-- Autocompletion
 			{ 
 				"hrsh7th/nvim-cmp" ,
-				setup = function()
-					local cmp = require "cmp"
+				config = function()
+					local cmp = require("cmp")
 					cmp.setup {
 						mapping = {
 							-- `Enter` key to confirm completion
@@ -203,7 +205,7 @@ require("lazy").setup {
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "L3MON4D3/LuaSnip" }
 		},
-		setup = function()
+		init = function()
 			local lsp_zero = require("lsp-zero").preset({})
 
 			lsp_zero.on_attach(function(client, buffer)
@@ -256,18 +258,19 @@ require("lazy").setup {
 				help = "?" -- help menu	
 			}
 		},
-		setup = function()
+		init = function()
 			vim.keymap.set("n", "<leader>errors", function() trouble.open { new = false, refresh = true } end)
 		end
 	},
 
 	{
-		"nvim-telescope/telescope.nvim", tag = "0.1.3",
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.3",
 		dependencies = { 
 			"nvim-lua/plenary.nvim", 
 			"nvim-telescope/telescope-ui-select.nvim" 
 		},
-		setup = function() 
+		config = function() 
 			local telescope_builtin = require "telescope.builtin"
 			local themes = require "telescope.themes"
 			local telescope = require "telescope"
