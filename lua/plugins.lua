@@ -236,7 +236,7 @@ require("lazy").setup {
 			action_keys = {
 				-- map to {} to remove a mapping, for example:
 				-- close = {},
-				close = "q", -- close the list
+				close = "<leader>x", -- close the list
 				cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
 				refresh = "r", -- manually refresh
 				jump = { "<cr>", "<tab>", "<2-leftmouse>" }, -- jump to the diagnostic or open / close folds
@@ -258,9 +258,13 @@ require("lazy").setup {
 				help = "?" -- help menu	
 			}
 		},
-		init = function()
-			vim.keymap.set("n", "<leader>errors", function() trouble.open { new = false, refresh = true } end)
-		end
+		keys = {
+			{
+			  "<leader>errors",
+			  "<cmd>Trouble diagnostics toggle<cr>",
+			  desc = "Diagnostics (Trouble)",
+			}
+		},
 	},
 
 	{
@@ -268,7 +272,7 @@ require("lazy").setup {
 		tag = "0.1.3",
 		dependencies = { 
 			"nvim-lua/plenary.nvim", 
-			"nvim-telescope/telescope-ui-select.nvim" 
+			"nvim-telescope/telescope-ui-select.nvim"
 		},
 		config = function() 
 			local telescope_builtin = require "telescope.builtin"
@@ -286,6 +290,7 @@ require("lazy").setup {
 
 			telescope.load_extension("ui-select")
 
+			vim.keymap.set("n", "<leader>actions", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "<leader>files", telescope_builtin.find_files, {})
 			vim.keymap.set("n", "<leader>grep", telescope_builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>buffers", telescope_builtin.buffers, {})
