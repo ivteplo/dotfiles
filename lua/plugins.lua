@@ -33,6 +33,18 @@ require("lazy").setup {
 		opts = {}
 	},
 
+	-- Quickly comment
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			toggler = {
+				-- Doesn't work :(
+				line = "<C-/>",
+				block = "<C-?>",
+			}
+		}
+	},
+
 
 	-- File explorer sidebar
 	{ 
@@ -168,8 +180,8 @@ require("lazy").setup {
 							return vim.fn.getcwd()
 						end,
 						settings = {
-							exportPdf = "onType",
-							outputPath = "$root/build/$dir/$name"
+							--exportPdf = "onType",
+							--outputPath = "$root/$dir/$name"
 						}
 					}
 				end
