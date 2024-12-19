@@ -164,5 +164,18 @@ return {
 			-- automatically scroll to the bottom on terminal output
 			auto_scroll = true,
 		}
+	},
+
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = true,
+		keys = {
+			{ mode = "n", desc = "Open Neogit", "<leader>git", "<cmd>Neogit<cr>" }
+		}
 	}
 }
