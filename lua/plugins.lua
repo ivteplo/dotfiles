@@ -17,11 +17,11 @@ require("lazy").setup {
 			update_interval = 1000,
 			set_dark_mode = function()
 				vim.api.nvim_set_option_value("background", "dark", {})
-				vim.cmd("colorscheme xcodedarkhc")
+				vim.cmd("colorscheme tokyonight")
 			end,
 			set_light_mode = function()
 				vim.api.nvim_set_option_value("background", "light", {})
-				vim.cmd("colorscheme xcodelighthc")
+				vim.cmd("colorscheme tokyonight-day")
 			end,
 		},
 	},
@@ -33,12 +33,23 @@ require("lazy").setup {
 		opts = {}
 	},
 
+	-- Auto-close braces, brackets, parentheses, quotes, etc.
+	{
+		"m4xshen/autoclose.nvim",
+		opts = {}
+	},
+
 	-- Quickly comment
 	{
 		"numToStr/Comment.nvim",
 		opts = {
+			-- Works only in line mode
 			toggler = {
-				-- Doesn't work :(
+				line = "<C-/>",
+				block = "<C-?>",
+			},
+			-- Mappings for the normal and visual modes
+			opleader = {
 				line = "<C-/>",
 				block = "<C-?>",
 			}
