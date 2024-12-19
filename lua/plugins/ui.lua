@@ -14,12 +14,15 @@ return {
 	-- Tab bar
 	{
 		"romgrk/barbar.nvim",
-		version = "^1.0.0", -- optional: only update when a new 1.x version is released
+		lazy = false,
+		version = "^1.0.0",
 		dependencies = {
-			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+			"lewis6991/gitsigns.nvim",
+			"nvim-tree/nvim-web-devicons",
 		},
-		init = function() vim.g.barbar_auto_setup = false end,
+		init = function() 
+			vim.g.barbar_auto_setup = false 
+		end,
 		opts = {
 			animation = true,
 
@@ -45,13 +48,13 @@ return {
 			insert_at_start = false,
 		},
 		keys = {
-			{ mode = 'n', '<C-p>', '<Cmd>BufferPrevious<CR>', desc = "Move to the previous buffer" },
-			{ mode = 'n', '<C-n>', '<Cmd>BufferNext<CR>', desc = "Move to the next buffer" },
+			{ '<C-p>', '<Cmd>BufferPrevious<CR>', desc = "Move to the previous buffer", mode = 'n' },
+			{ '<C-n>', '<Cmd>BufferNext<CR>', desc = "Move to the next buffer", mode = 'n' },
 
-			{ mode = 'n', '<leader><C-p>', '<Cmd>BufferMovePrevious<CR>', desc = "Move the buffer to the left in the navigation bar" },
-			{ mode = 'n', '<leader><C-n>', '<Cmd>BufferMoveNext<CR>', desc = "Move the buffer to the right in the navigation bar" },
+			{ '<leader><C-p>', '<Cmd>BufferMovePrevious<CR>', desc = "Move the buffer to the left in the navigation bar", mode = 'n' },
+			{ '<leader><C-n>', '<Cmd>BufferMoveNext<CR>', desc = "Move the buffer to the right in the navigation bar", mode = 'n' },
 
-			{ mode = 'n', '<leader>x', '<Cmd>BufferClose<CR>', desc = "Close the current buffer" },
+			{ '<leader>x', '<Cmd>BufferClose<CR>', desc = "Close the current buffer", mode = 'n' },
 
 			-- Wipeout buffer
 			--     :BufferWipeout
@@ -101,6 +104,21 @@ return {
 			"nvim-lua/plenary.nvim", 
 			"nvim-telescope/telescope-ui-select.nvim"
 		},
+		keys = {
+			{ "<leader>actions", vim.lsp.buf.code_action, mode = "n" },
+			{ "<leader>files", "<cmd>Telescope find_files<cr>", mode = "n" },
+			{ "<leader>grep", "<cmd>Telescope live_grep<cr>", mode = "n" },
+			{ "<leader>buffers", "<cmd>Telescope buffers<cr>", mode = "n" },
+			{ "<leader>help", "<cmd>Telescope help_tags<cr>", mode = "n" },
+			{ "<leader>cmd", "<cmd>Telescope commands<cr>", mode = "n" },
+			{ "<leader>theme", "<cmd>Telescope colorscheme<cr>", mode = "n" },
+			{ "<leader>ref", "<cmd>Telescope lsp_references<cr>", mode = "n" },
+			{ "<leader>symbols", "<cmd>Telescope lsp_document_symbols<cr>", mode = "n" },
+			{ "<leader>wssymbols", "<cmd>Telescope lsp_workspace_symbols<cr>", mode = "n" },
+			{ "<leader>impl", "<cmd>Telescope lsp_implementations<cr>", mode = "n" },
+			{ "<leader>def", "<cmd>Telescope lsp_definitions<cr>", mode = "n" },
+			{ "<leader>typedef", "<cmd>Telescope lsp_type_definitions<cr>", mode = "n" },
+		},
 		config = function() 
 			local telescope_builtin = require "telescope.builtin"
 			local themes = require "telescope.themes"
@@ -116,21 +134,7 @@ return {
 			}
 
 			telescope.load_extension("ui-select")
-
-			vim.keymap.set("n", "<leader>actions", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>files", telescope_builtin.find_files, {})
-			vim.keymap.set("n", "<leader>grep", telescope_builtin.live_grep, {})
-			vim.keymap.set("n", "<leader>buffers", telescope_builtin.buffers, {})
-			vim.keymap.set("n", "<leader>help", telescope_builtin.help_tags, {})
-			vim.keymap.set("n", "<leader>cmd", telescope_builtin.commands, {})
-			vim.keymap.set("n", "<leader>theme", telescope_builtin.colorscheme, {})
-			vim.keymap.set("n", "<leader>ref", telescope_builtin.lsp_references, {})
-			vim.keymap.set("n", "<leader>symbols", telescope_builtin.lsp_document_symbols, {})
-			vim.keymap.set("n", "<leader>wssymbols", telescope_builtin.lsp_workspace_symbols, {})
-			vim.keymap.set("n", "<leader>impl", telescope_builtin.lsp_implementations, {})
-			vim.keymap.set("n", "<leader>def", telescope_builtin.lsp_definitions, {})
-			vim.keymap.set("n", "<leader>typedef", telescope_builtin.lsp_type_definitions, {})
-		end
+		end,
 	},
 
 	{ 
@@ -175,7 +179,7 @@ return {
 		},
 		config = true,
 		keys = {
-			{ mode = "n", desc = "Open Neogit", "<leader>git", "<cmd>Neogit<cr>" }
+			{ "<leader>git", "<cmd>Neogit<cr>", mode = "n", desc = "Open Neogit" }
 		}
 	}
 }
