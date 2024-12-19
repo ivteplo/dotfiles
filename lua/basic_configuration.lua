@@ -33,3 +33,7 @@ vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
 vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
+
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono Nerd Font Propo:h12"
+end

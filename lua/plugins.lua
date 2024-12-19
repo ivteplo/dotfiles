@@ -114,7 +114,7 @@ require("lazy").setup {
 			--     :BufferCloseAllButCurrentOrPinned
 			--     :BufferCloseBuffersLeft
 			--     :BufferCloseBuffersRight
-
+--
 			-- Sort automatically by...
 			--     :BufferOrderByBufferNumber
 			--     :BufferOrderByDirectory
@@ -158,7 +158,8 @@ require("lazy").setup {
 			local lsp = require "lspconfig"
 
 			-- Enable (broadcasting) snippet capability for completion
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			--local capabilities = vim.lsp.protocol.make_client_capabilities()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			require("mason-lspconfig").setup_handlers {
@@ -203,13 +204,25 @@ require("lazy").setup {
 				config = function()
 					local cmp = require("cmp")
 					cmp.setup {
-						mapping = {
+						sources = {
+							{ name = "nvim_lsp" },
+							{ name = "luasnip" },
+							{ name = "buffer" },
+						},
+						expand = function(args)
+							vim.snippet.expand(args.body)
+							--require('luasnip').lsp_expand(args.body)
+						end,
+						mapping = cmp.mapping.preset.insert({
 							-- `Enter` key to confirm completion
 							["<CR>"] = cmp.mapping.confirm({ select = false }),
 
-							-- Ctrl+Space to trigger completion menu
-							["<C-Space>"] = cmp.mapping.complete(),
-						}
+							--<Ctrl-n>: Go to the next item in the completion menu, or trigger completion menu.
+							--<Ctrl-p>: Go to the previous item in the completion menu, or trigger completion menu.
+
+							['<C-u>'] = cmp.mapping.scroll_docs(-4),
+							['<C-d>'] = cmp.mapping.scroll_docs(4),   
+						}),
 					}
 				end
 			},
@@ -220,10 +233,10 @@ require("lazy").setup {
 		init = function()
 			local lsp_zero = require("lsp-zero").preset({})
 
-			lsp_zero.on_attach(function(client, buffer)
+			lsp_zero.on_attach(function(client, buffnr)
 				-- see :help lsp-zero-keybindings
 				-- to learn the available actions
-				lsp_zero.default_keymaps({ buffer = buffer })
+				lsp_zero.default_keymaps({ buffer = buffnr })
 			end)
 
 			lsp_zero.setup {}
@@ -339,7 +352,6 @@ require("lazy").setup {
 
 			-- whether or not the open mapping applies in the opened terminals
 			terminal_mappings = true,
-			persist_size = true,
 			-- if set to true (default) the previous terminal mode will be remembered
 			persist_mode = true,
 			direction = "horizontal",
