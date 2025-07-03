@@ -34,9 +34,14 @@ Install-Module -name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -Skip
 
 ### Git
 
-`bash/user_profile.sh` and `powershell/user_profile.ps1` automatically add custom git scripts to the path.
+There are a few Git aliases provided for you:
+- `uncommit` — undo the last commit.
+- `recommit` — redo the last commit.
+- `edit-commit` — edit the last commit message.
+- `history` — show a commit history (`git log --all --graph`).
 
-If you don't use those shells/files, you just have to add `~/.config/git/scripts` to your path variable.
+You can find aliases in [`git/config`](./git/config). They are in the 
+`[alias]` section.
 
 ### Vim
 
