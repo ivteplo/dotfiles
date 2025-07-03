@@ -1,2 +1,11 @@
-configstore/*
-scoop/*
+/*
+!.gitignore
+!README.md
+!starship.toml
+!vim/
+!windows-terminal.json
+!bash/
+!git/
+git/private-config
+!LICENSE
+!powershell/

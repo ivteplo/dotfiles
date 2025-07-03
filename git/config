@@ -1,0 +1,69 @@
+[include]
+	path = ./private-config
+
+[alias]
+	edit-commit = "commit --amend"
+	recommit = "commit --amend --no-edit"
+	uncommit = "reset HEAD~1"
+	history = "log --all --graph"
+
+[core]
+	autocrlf = true
+	editor = nvim
+
+[init]
+	defaultBranch = main
+
+[status]
+	branch = true
+	showStash = true
+	showUntrackedFiles = all
+
+[diff]
+	renames = copies
+	context = 3
+	interHunkContext = 10
+
+[pager]
+	diff = diff-so-fancy
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
+
+[diff-so-fancy]
+	markEmptyLines = false
+
+[push]
+	autoSetupRemote = true
+	; By default push only the current branch
+	default = current
+	; Push tags by default
+	followTags = true
+
+[pull]
+	; By default pull only the current branch
+	default = current
+	; Automatically rebase if possible
+	rebase = true
+
+[rebase]
+	autoStash = true
+	missingCommitsCheck = warn
+
+[log]
+	abbrevCommit = true
+
+[pretty]
+	custom = format:%C(green)%h %C(white) by %an — %ar%C(auto)  %D%n%s%n
+
+[format]
+	; Use the custom format for git-log by default
+	pretty = custom
+
+[branch]
+	; Sort by the date of the last change
+	sort = -committerdate
+
+[tag]
+	; Sort by the date of adding the tag
+	sort = -taggerdate
